@@ -11,6 +11,7 @@ import AsideMenu from './components/AsideMenu.js';
 import Footer from './components/Footer.js';
 import Offline from './components/Offline.js';
 import Profile from './pages/Profile.js';
+import Details from './pages/Details.js'
 
 function App() {
   const [items, setItems] = React.useState([]);
@@ -57,7 +58,7 @@ function App() {
       {isLoading ? <Splash /> : (
         <>
           {offlineStatus && <Offline />}
-          <Header />
+          <Header mode="light" />
           <Hero />
           <Browse />
           <Arrived items={items} />
@@ -75,6 +76,7 @@ export default function Routes() {
     <Router>
       <Route path="/" exact component={App} />
       <Route path="/profile" exact component={Profile} />
+      <Route path="/details/:id" component={Details} />
     </Router>
   )
 }

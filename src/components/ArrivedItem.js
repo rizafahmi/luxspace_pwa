@@ -1,10 +1,5 @@
-function numberFormat(price) {
-  const currency = Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR"
-  });
-  return currency.format(price);
-}
+import { Link } from 'react-router-dom';
+import { numberFormat } from '../utils.js';
 
 function ArrivedItem({ item }) {
   return (
@@ -44,9 +39,9 @@ function ArrivedItem({ item }) {
       </div>
       <h5 className="text-lg font-semibold mt-4">{item.name}</h5>
       <span className="">{numberFormat(item.price)}</span>
-      <a href="/details" className="stretched-link">
+      <Link to={{ pathname: `/details/${item.id}`, state: item }} className="stretched-link">
 
-      </a>
+      </Link>
     </div>
   )
 }

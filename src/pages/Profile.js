@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
-    .replace(/\-/g, '+')
+    .replace(/-/g, '+')
     .replace(/_/g, '/');
 
   const rawData = window.atob(base64);
@@ -19,7 +19,7 @@ async function subscribe() {
   const key = "BFU28NcY0EjONuGJsCfi5cWYn0s7tQ2rbndMkLertt6tNvpWB-8rBbRPemTcgO64APWgKTCe1rVMxT4-d1-MS24";
 
   try {
-    const sub = await global.registration.pushManager.subscribe({
+    await global.registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlB64ToUint8Array(key)
     });
